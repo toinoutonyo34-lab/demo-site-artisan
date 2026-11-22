@@ -210,9 +210,9 @@
 }
 </script>
 <script>document.documentElement.classList.replace("no-js","js");</script>
-  <script type="module" crossorigin src="/demo-site-artisan/assets/index-D5VrIyWm.js"></script>
-  <link rel="modulepreload" crossorigin href="/demo-site-artisan/assets/main-CY8wyfW5.js">
-  <link rel="stylesheet" crossorigin href="/demo-site-artisan/assets/main-B7n6Rmw1.css">
+  <script type="module" crossorigin src="/demo-site-artisan/assets/index-C5L8kq4f.js"></script>
+  <link rel="modulepreload" crossorigin href="/demo-site-artisan/assets/main-I4IHnkMa.js">
+  <link rel="stylesheet" crossorigin href="/demo-site-artisan/assets/main-Bl5j2Q--.css">
 </head>
 <body class="page-contact">
 <a class="skip" href="#contenu" data-inert-when-nav>Aller au contenu</a>
@@ -245,7 +245,10 @@
 </header>
 <button class="nav-backdrop" type="button" data-close-nav hidden aria-label="Fermer le menu"></button>
 <main id="contenu" tabindex="-1" data-inert-when-nav>
-  <header class="page-hero">
+  <header class="page-hero page-hero-photo">
+    <div class="page-hero-media" aria-hidden="true">
+      <img src="/demo-site-artisan/images/hero-wide.webp" alt="" width="1280" height="720" decoding="async">
+    </div>
     <div class="container">
       <nav class="breadcrumb" aria-label="Fil d’Ariane">
       <ol>
@@ -267,53 +270,68 @@
         <div id="form-errors" class="form-errors" role="alert" tabindex="-1" hidden></div>
         <form id="devis-form" method="post" action="/demo-site-artisan/contact/" novalidate>
           <p class="form-legend">Les champs marqués d’une étoile <span aria-hidden="true">*</span> sont obligatoires.</p>
-          <div class="form-grid">
+          <p class="step-label" id="step-label" aria-live="polite">Étape 1 sur 3 — Vous</p>
+          <div class="step-bar" aria-hidden="true"><span id="step-fill"></span></div>
+          <fieldset class="step is-active" data-step="1">
+            <legend class="visually-hidden">Vous</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="nom">Nom <span aria-hidden="true">*</span></label>
+                <input id="nom" name="nom" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="nom-error">
+                <p id="nom-error" class="field-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="telephone">Téléphone <span aria-hidden="true">*</span></label>
+                <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" spellcheck="false" aria-describedby="telephone-hint telephone-error" placeholder="04 00 00 00 00">
+                <p id="telephone-hint" class="hint">Numéro fictif accepté pour l’essai : <span class="nowrap">04 00 00 00 00</span>.</p>
+                <p id="telephone-error" class="field-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="step" data-step="2">
+            <legend class="visually-hidden">Le lieu</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="120" spellcheck="false" aria-describedby="email-hint email-error" placeholder="contact@exemple.fr">
+                <p id="email-hint" class="hint">Pour l’essai : contact@exemple.fr.</p>
+                <p id="email-error" class="field-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="commune">Commune <span aria-hidden="true">*</span></label>
+                <input id="commune" name="commune" type="text" list="communes" autocomplete="address-level2" required minlength="2" maxlength="80" aria-describedby="commune-error">
+                <datalist id="communes"><option value="Montpellier"></option><option value="Castelnau-le-Lez"></option><option value="Lattes"></option><option value="Pérols"></option><option value="Le Crès"></option><option value="Clapiers"></option><option value="Jacou"></option><option value="Montferrier-sur-Lez"></option><option value="Juvignac"></option><option value="Grabels"></option><option value="Saint-Jean-de-Védas"></option><option value="Lavérune"></option><option value="Fabrègues"></option><option value="Mauguio"></option><option value="Baillargues"></option><option value="Saint-Aunès"></option><option value="Palavas-les-Flots"></option><option value="Villeneuve-lès-Maguelone"></option></datalist>
+                <p id="commune-error" class="field-error" hidden></p>
+              </div>
+              <div class="field span-2">
+                <label for="prestation">Prestation <span aria-hidden="true">*</span></label>
+                <select id="prestation" name="prestation" required aria-describedby="prestation-error">
+                  <option value="">Choisir une prestation</option>
+                  <option value="depannage-fuite">Dépannage fuite</option><option value="chauffe-eau">Chauffe-eau</option><option value="salle-de-bain">Salle de bain</option><option value="chaudiere">Chaudière</option><option value="debouchage">Débouchage</option><option value="renovation">Rénovation</option>
+                </select>
+                <p id="prestation-error" class="field-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="step" data-step="3">
+            <legend class="visually-hidden">Le besoin</legend>
             <div class="field">
-              <label for="nom">Nom <span aria-hidden="true">*</span></label>
-              <input id="nom" name="nom" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="nom-error">
-              <p id="nom-error" class="field-error" hidden></p>
-            </div>
-            <div class="field">
-              <label for="telephone">Téléphone <span aria-hidden="true">*</span></label>
-              <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" spellcheck="false" aria-describedby="telephone-hint telephone-error" placeholder="04 00 00 00 00">
-              <p id="telephone-hint" class="hint">Numéro fictif accepté pour l’essai : <span class="nowrap">04 00 00 00 00</span>.</p>
-              <p id="telephone-error" class="field-error" hidden></p>
-            </div>
-            <div class="field">
-              <label for="email">E-mail <span aria-hidden="true">*</span></label>
-              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="120" spellcheck="false" aria-describedby="email-hint email-error" placeholder="contact@exemple.fr">
-              <p id="email-hint" class="hint">Pour l’essai : contact@exemple.fr.</p>
-              <p id="email-error" class="field-error" hidden></p>
-            </div>
-            <div class="field">
-              <label for="commune">Commune <span aria-hidden="true">*</span></label>
-              <input id="commune" name="commune" type="text" list="communes" autocomplete="address-level2" required minlength="2" maxlength="80" aria-describedby="commune-error">
-              <datalist id="communes"><option value="Montpellier"></option><option value="Castelnau-le-Lez"></option><option value="Lattes"></option><option value="Pérols"></option><option value="Le Crès"></option><option value="Clapiers"></option><option value="Jacou"></option><option value="Montferrier-sur-Lez"></option><option value="Juvignac"></option><option value="Grabels"></option><option value="Saint-Jean-de-Védas"></option><option value="Lavérune"></option><option value="Fabrègues"></option><option value="Mauguio"></option><option value="Baillargues"></option><option value="Saint-Aunès"></option><option value="Palavas-les-Flots"></option><option value="Villeneuve-lès-Maguelone"></option></datalist>
-              <p id="commune-error" class="field-error" hidden></p>
-            </div>
-            <div class="field span-2">
-              <label for="prestation">Prestation <span aria-hidden="true">*</span></label>
-              <select id="prestation" name="prestation" required aria-describedby="prestation-error">
-                <option value="">Choisir une prestation</option>
-                <option value="depannage-fuite">Dépannage fuite</option><option value="chauffe-eau">Chauffe-eau</option><option value="salle-de-bain">Salle de bain</option><option value="chaudiere">Chaudière</option><option value="debouchage">Débouchage</option><option value="renovation">Rénovation</option>
-              </select>
-              <p id="prestation-error" class="field-error" hidden></p>
-            </div>
-            <div class="field span-2">
               <label for="message">Message <span aria-hidden="true">*</span></label>
               <textarea id="message" name="message" required minlength="20" maxlength="2000" aria-describedby="message-hint message-error"></textarea>
               <p id="message-hint" class="hint">20 caractères minimum. Décrivez l’accès, l’étage et ce qui fuit ou ne chauffe plus.</p>
               <p id="message-error" class="field-error" hidden></p>
             </div>
-          </div>
-          <div class="consent">
-            <input id="consentement" name="consentement" type="checkbox" value="oui" required aria-describedby="consentement-hint consentement-error">
-            <label for="consentement">J’accepte que les informations saisies soient utilisées pour me recontacter au sujet de ma demande de devis. <span aria-hidden="true">*</span></label>
-          </div>
-          <p id="consentement-hint" class="hint"><a href="/demo-site-artisan/politique-de-confidentialite/">Politique de confidentialité</a> — dans cette démonstration, aucune donnée n’est transmise.</p>
-          <p id="consentement-error" class="field-error" hidden></p>
+            <div class="consent">
+              <input id="consentement" name="consentement" type="checkbox" value="oui" required aria-describedby="consentement-hint consentement-error">
+              <label for="consentement">J’accepte que les informations saisies soient utilisées pour me recontacter au sujet de ma demande de devis. <span aria-hidden="true">*</span></label>
+            </div>
+            <p id="consentement-hint" class="hint"><a href="/demo-site-artisan/politique-de-confidentialite/">Politique de confidentialité</a> — dans cette démonstration, aucune donnée n’est transmise.</p>
+            <p id="consentement-error" class="field-error" hidden></p>
+          </fieldset>
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Demander un devis gratuit</button>
+            <button class="btn btn-secondary" type="button" data-back>Retour</button>
+            <button class="btn btn-primary" type="button" data-next>Continuer</button>
+            <button class="btn btn-primary" type="submit" data-send>Demander un devis gratuit</button>
           </div>
         </form>
         <div id="confirmation" class="confirmation" role="status" tabindex="-1" hidden>
