@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://toinoutonyo34-lab.github.io/demo-site-artisan/sitemap.xml
